@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Логистическая компания "Экзодар"</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="app">
+        <div class="row">
+            <!--Навигация-->
+            <div class="col-xl-2 bg-primary min-vh-100">
+                <div class="row py-5">
+                    <h2 class="text-white text-center" style="font-weight: bold">ООО "Экзодар"</h2>
+                </div>
+
+                <div class="row">
+                    <nav class="navbar flex-column text-center">
+                        <a href="#" class="nav-link text-white" id="nav-routes">Маршруты</a>
+                        <a href="#" class="nav-link text-white" id="nav-transport">Виды транспортировок</a>
+                        <a href="#" class="nav-link text-white" id="nav-vehicle">Транспортные средства</a>
+                        <a href="#" class="nav-link text-white" id="nav-schemes">Транспортно-технологические схемы</a>
+                        <a href="#" class="nav-link text-white" id="nav-clients">Клиенты</a>
+                        <a href="#" class="nav-link text-white" id="nav-requests">Заявки</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!--Главное окно-->
+            <div class="col p-5">
+                <div class="row" id="windows">
+                    <!--Маршруты-->
+                    <div class="col d-none" id="routes">
+                        <h1 class="text-center">Маршруты</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#routeModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Адрес отправления</th>
+                                <th>Адрес прибытия</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="modal" id="routeModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Маршрут</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="routeDeparture">Адрес отправления</label>
+                                                <input class="form-control" id="routeDeparture">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="routeDestination">Адрес прибытия</label>
+                                                <input class="form-control" id="routeDestination">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Виды транспортировок-->
+                    <div class="col d-none" id="transportations">
+                        <h1 class="text-center">Виды транспортировок</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#transportationModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Наименование</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="modal" id="transportationModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Вид транспортировки</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="transportationName">Наименование</label>
+                                                <input class="form-control" id="transportationName">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Транспортные средства-->
+                    <div class="col d-none" id="vehicles">
+                        <h1 class="text-center">Транспортные средства</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#vehicleModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Наименование</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>1</td>
+                                <td>Test1</td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                         class="bi bi-pencil-fill btn p-0" viewBox="0 0 16 16">
+                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                         class="bi bi-trash-fill btn p-0" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                    </svg>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="modal" id="vehicleModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Вид транспортного средства</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="vehicleName">Наименование</label>
+                                                <input class="form-control" id="vehicleName">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Схемы-->
+                    <div class="col d-none" id="schemes">
+                        <h1 class="text-center">Транспортно-технологические схемы</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#schemesModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Тип транспортного средства</th>
+                                <th>Тип транспортировки</th>
+                                <th>Маршрут</th>
+                                <th>Кол-во транспортных средств</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="modal" id="schemesModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Транспортно-технологическая схема</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="requestsClient">Тип транспортного средства</label>
+                                                <select class="form-control" id="schemeVehicle"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsClient">Тип транспортировки</label>
+                                                <select class="form-control" id="schemeTransportation"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsClient">Маршрут</label>
+                                                <select class="form-control" id="schemeRoute"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="schemeNumber">Кол-во транспортных средств</label>
+                                                <input class="form-control" id="schemeNumber">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Клиенты-->
+                    <div class="col d-none" id="clients">
+                        <h1 class="text-center">Клиенты</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#clientsModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Фамилия</th>
+                                <th>Имя</th>
+                                <th>Отчество</th>
+                                <th>Серия паспорта</th>
+                                <th>Номер паспорта</th>
+                                <th>Телефон</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>1</td>
+                                <td>Бычковский</td>
+                                <td>Максим</td>
+                                <td>Андреевич</td>
+                                <td>0000</td>
+                                <td>000000</td>
+                                <td>8 960 4353230</td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                         class="bi bi-pencil-fill btn p-0" viewBox="0 0 16 16">
+                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                         class="bi bi-trash-fill btn p-0" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                    </svg>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="modal" id="clientsModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Клиент</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="clientsSurname">Фамилия</label>
+                                                <input class="form-control" id="clientsSurname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="clientsName">Имя</label>
+                                                <input class="form-control" id="clientsName">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="clientsPatronymic">Отчество</label>
+                                                <input class="form-control" id="clientsPatronymic">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="clientsSeries">Серия паспорта</label>
+                                                <input class="form-control" id="clientsSeries">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="clientsNumber">Номер паспорта</label>
+                                                <input class="form-control" id="clientsNumber">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="clientsPhone">Телефон</label>
+                                                <input class="form-control" id="clientsPhone">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Заявки-->
+                    <div class="col d-none" id="requests">
+                        <h1 class="text-center">Заявки</h1>
+                        <div class="row my-5">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                     class="bi bi-plus-lg btn p-0" viewBox="0 0 16 16" data-toggle="modal"
+                                     data-target="#requestsModal">
+                                    <path fill-rule="evenodd"
+                                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <table class="table p">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Транспортно-технологическая схема</th>
+                                <th>Клиент</th>
+                                <th>Дата исполнения</th>
+                                <th>Время исполнения</th>
+                                <th>Описание</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="modal" id="requestsModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Заявка</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="requestsScheme">Транспортно-технологическая схема</label>
+                                                <select class="form-control" id="requestsScheme"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsClient">Клиент</label>
+                                                <select class="form-control" id="requestsClient"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsDate">Дата исполнения</label>
+                                                <input class="form-control" id="requestsDate">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsTime">Время исполнения</label>
+                                                <input class="form-control" id="requestsTime">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="requestsDesc">Описание</label>
+                                                <textarea class="form-control" id="requestsDesc"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary modal-btn-add">Добавить</button>
+                                        <button type="button" class="btn btn-primary modal-btn-save">Сохранить</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script src="js/config.js"></script>
+
+<script src="js/routes.js"></script>
+<script src="js/transportation.js"></script>
+<script src="js/vehicles.js"></script>
+<script src="js/clients.js"></script>
+<script src="js/schemes.js"></script>
+<script src="js/requests.js"></script>
+
+<script src="js/navigation.js"></script>
+</body>
+</html>
