@@ -1,1 +1,1 @@
-const API_LINK = 'http://127.0.0.1:8080/api/'
+const API_LINK = 'https://exam-task-front.herokuapp.com/api/'
